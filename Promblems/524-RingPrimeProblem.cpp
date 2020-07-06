@@ -16,16 +16,16 @@ bool isPrime(int a){
 
 void backTracking(int n, vector<int> &ln, vector<int> &pn){
     if(ln.empty()){
+        pn.push_back(n);
         possibilities.push_back(pn);
         return;
     }else{
         for(int i=0; i<ln.size(); i++){
-            vector<int> _lp = ln;
-            vector<int> _pn2;
             if(isPrime(ln[i]+n)){
-                _lp.erase(_lp.begin()+i);
+                vector<int> _pn2 = pn;
+                vector<int> _ln2 = ln;
+                _ln2.erase(_ln2.begin()+i);
                 _pn2.push_back(i);
-                vector<int> _ln2 = _lp;
                 backTracking(i,_ln2,_pn2);
             }
         }
