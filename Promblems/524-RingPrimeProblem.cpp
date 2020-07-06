@@ -12,13 +12,13 @@ bool isPrime(int a){
          break;
       }
    }
+   return _prime;
 }
 
 void backTracking(int n, vector<int> &ln, vector<int> &pn){
     if(ln.empty()){
         pn.push_back(n);
-        possibilities.push_back(pn);
-        return;
+        possibilities.push_back(pn);        
     }else{
         for(int i=0; i<ln.size(); i++){
             if(isPrime(ln[i]+n)){
@@ -30,23 +30,25 @@ void backTracking(int n, vector<int> &ln, vector<int> &pn){
             }
         }
     }
+    return;
 }
 
 
 
  int main(int argc, char const *argv[])
  {
-     vector<int> a;
-
-     for (size_t i = 0; i < 5; i++)
-     {
-         a.push_back(i);
-     }
-
-     a.erase(a.begin()+ 2);
-     for (size_t i = 0; i < a.size(); i++)
+     vector<int> a = {2,3,4,5,6};
+     vector<int> b;
+     backTracking(1,a,b);
+        
+     for (size_t i = 0; i < possibilities.size(); i++)
      {  
-        cout<<a[i]<<endl;
+        cout<<" CASE "<<i+1<<endl;
+        for (int j = 0; j < possibilities[i].size(); j++)
+        {
+            cout<<possibilities[i][j]<<" ";
+        }
+        
      }
      
      
