@@ -8,68 +8,32 @@ vector<char> getStringVec(string s){
     return v;    
 }
 
+int sherlockAndAnagrams(string w) {
+    int c=0;
+    map<vector<char>,int> _map;
+    map<vector<char>,int>::iterator it;
 
-
-
-
-bool CompareMaps(const map<char,int>& l, const map<char,int>& r)
-{
-  // same types, proceed to compare maps here
-
-  if(l.size() != r.size())
-    return false;  // differing sizes, they are not the same
-
-  typename map<char,int>::const_iterator i, j;
-  for(i = l.begin(), j = r.begin(); i != l.end(); ++i, ++j)
-  {
-    if(*i != *j)
-      return false;
-  }
-
-  return true;
-}
-
-// Complete the sherlockAndAnagrams function below.
-int sherlockAndAnagrams(string word) {
-    map<vector<char>, int> dict;
-    int c = 0;
-    for (int i = 0; i < word.length(); i++)
-    {
-        for (int j = 1; j <= word.length() - i; j++)
-        {
-            vector<char> k = getStringVec(word.substr(i, j));   
-            sort(k.begin(),k.end());          
-            if (dict.find(k)!=dict.end())
-            {
-                c++;
-                //dict[k] = dict[k] + 1;
-            }
+    for(int i=0; i<w.length(); i++){
+        for(int j=0; j<w.length()-i; j++){        
+            vector<char> v = getStringVec(w.substr(j,i+1));
+            sort(v.begin(),v.end());
+            if(_map.find(v)!=_map.end())                
+                _map[v]++;
             else
-                dict.insert(make_pair(k, 1));
+                _map.insert(make_pair(v,1));                        
         }
     }
+    
+    for(it =_map.begin(); it != _map.end(); it++)
+        c += (it->second)*(it->second-1)/2;    
     return c;
 
 }
 
 int main(int argc, char const *argv[])
 {
-   cout<<sherlockAndAnagrams("kkkk");
-    // vector<char> a {'b','b','a'};
-    // vector<char> b {'a','b','b'};
-
-    // map<vector<char>,int> map1;
-    // sort(a.begin(), a.end()); 
-    // map1.insert(make_pair(b,100));
-    
-    // cout << "Sorted \n"; 
-    // for (auto x : a) 
-    //     cout << x << " "; 
-
-    // cout<<map1[b]<<endl;
-
-    
-
-
+    string w;
+    cin>>w;
+    cout<<sherlockAndAnagrams(w)<<endl;  
     return 0;
 }
