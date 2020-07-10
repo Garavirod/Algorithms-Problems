@@ -17,7 +17,7 @@ void subString(string s, int n)
 // Driver program to test above function 
 int main()  
 { 
-    string s = "abba"; 
+    string s = "kkkk"; 
     subString(s,s.length()); 
     return 0; 
 } 
