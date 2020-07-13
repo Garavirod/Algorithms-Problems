@@ -1,28 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int isGeometricProgressive(vector<long> &v, int r){
-    for(long i=0; i<v.size()-1; i++)
-        if(v[i+1]!=v[i]*r)
-            return 0;
-    return 1;
+map<long,long> Counter (vector<long> &v){
+    map <long,long> _map;
+    for(auto x: v){
+        if(_map.find(x)==_map.end())
+            _map.insert(make_pair(x,1));        
+        else
+            _map[x]++;
+    }
+    return _map;
 }
 
 
 // Complete the countTriplets function below.
 long countTriplets(vector<long> &arr, long r) {
     long N = arr.size();
-    long c = 0;
-    string bitmask(3,1);
-    bitmask.resize(N,0);
-    do{
-        vector<long> triplete;
-        for(long i=0; i<N; i++)
-            if(bitmask[i])
-                triplete.push_back(arr[i]);
-        if(isGeometricProgressive(triplete,r))
-            c++;
-    }while(prev_permutation(bitmask.begin(),bitmask.end()));
+    long c = 0;    
+    map<long,long> leftMap;
+    map<long,long> rightMap = Counter(arr);
+    leftMap.insert(make_pair(arr[0],1));
+    for(long a = 1; a<arr.size()-1; a++){
+        rightMap[arr[a]]--;
+        long i = arr[a]/r;
+        long k = arr[a]*r;
+
+        c += leftMap[i]*rightMap[k];        
+
+        if(leftMap.find(arr[a]) == leftMap.end())
+            leftMap.insert(make_pair(arr[a],1));
+        else
+            leftMap[a]++;        
+    }
     return c;
 }
 
