@@ -15,22 +15,21 @@ map<long,long> Counter (vector<long> &v){
 
 // Complete the countTriplets function below.
 long countTriplets(vector<long> &arr, long r) {
-    long N = arr.size();
     long c = 0;    
     map<long,long> leftMap;
     map<long,long> rightMap = Counter(arr);
     leftMap.insert(make_pair(arr[0],1));
+    rightMap[arr[0]]--;   
+     
     for(long a = 1; a<arr.size()-1; a++){
-        rightMap[arr[a]]--;
+        rightMap[arr[a]]--;        
         long i = arr[a]/r;
         long k = arr[a]*r;
-
         c += leftMap[i]*rightMap[k];        
-
         if(leftMap.find(arr[a]) == leftMap.end())
             leftMap.insert(make_pair(arr[a],1));
         else
-            leftMap[a]++;        
+            leftMap[arr[a]]++;        
     }
     return c;
 }
@@ -39,7 +38,7 @@ long countTriplets(vector<long> &arr, long r) {
 
 int main(int argc, char const *argv[])
 {
-    vector<long> d = {1,3, 9, 9, 27, 81};
-    cout<<countTriplets(d,3)<<endl;
+    vector<long> d (100,1);
+    cout<<countTriplets(d,1)<<endl;
     return 0;
 }
