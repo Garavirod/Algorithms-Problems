@@ -11,7 +11,7 @@ int N = 10000000;
     divisiro máximio de c[j]
 
 */
-void iniciar_criba()
+void initCriba()
 {
     for (int i = 0; i <= N; i++)
         C[i] = i;
@@ -44,7 +44,7 @@ void fp(int X)
 int main(int argc, char const *argv[])
 {
     int x;
-    iniciar_criba();
+    initCriba();
     while (cin >> x)    
         fp(x);
     
