@@ -34,25 +34,16 @@ vector<int> freqQuery(vector<vector<int>> queries) {
     map<long,long> Map1, Map2;
     for (auto q: queries){
         if(q[0]==1){//CASE 1                        
-            if(Map1.find(q[1])!= Map1.end()){ //Exist on M1               
-                Map2[Map1[q[1]]]-=1;
-                Map1[q[1]]+=1;                
-            }else //Not Exist on M1
-                Map1.insert(make_pair(q[1],1));                
-            
-            if(Map2.find(Map1[q[1]])!=Map2.end())
-                    Map2[Map1[q[1]]]+=1;
-            else
-                Map2.insert(make_pair(Map1[q[1]], 1));
+            Map2[Map1[q[1]]]-=1;
+            Map1[q[1]]+=1; 
+            Map2[Map1[q[1]]]+=1;                          
             
         }else if (q[0]==2){//CASE 2
-           if(Map1.find(q[1])!= Map1.end()){ //Exist on M1
-               Map2[Map1[q[1]]]-=1;
+            int w = Map1[q[1]];
+           if(w>0){ //Exist on M1
+               Map2[w]-=1;
                Map1[q[1]]-=1;
-               if(Map2.find(Map1[q[1]])!=Map2.end())
-                    Map2[Map1[q[1]]]+=1;
-               else
-                    Map2.insert(make_pair(Map1[q[1]], 1));                            
+               Map2[Map1[q[1]]]+=1;                                           
            }
         }else{
           

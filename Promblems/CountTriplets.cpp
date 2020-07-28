@@ -34,11 +34,9 @@ long countTriplets(vector<long> arr, long r) {
 
 int main(int argc, char const *argv[])
 {
-    // vector<long> d {1,3,3,9,9,9,27,81};
-    // cout<<countTriplets(d,3)<<endl;
-    map<int,int> as;
-    as.insert(make_pair(2,5));
-    as.contains(2);
+    vector<long> d {1,3,3,9,9,9,27,81};
+    cout<<countTriplets(d,3)<<endl;
+    
 
     return 0;
 }
