@@ -54,11 +54,11 @@ using namespace std;
 */
 
 int maxSumNotAdj(vector<int> &v){
-    int inc = v[0], exc = 0,k;     
-    for(int i=1; i<v.size(); i++){
-        k = exc + v[i];
-        exc = inc;
-        inc = k;
+    int inc = v[0], exc = 0,k;  
+    for(int i=1; i<v.size(); i++)   {
+        k = max(exc,inc);
+        inc = exc + v[i];
+        exc = k;
     }
     return max(exc,inc);
 }
