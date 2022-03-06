@@ -12,15 +12,16 @@ from copy import copy
 
 
 def zero_matrix( matrix: list ) -> list:
-    zero_row = [0]*len(matrix[0])    
-    row_to_repleace = []
-    for i,row in enumerate(matrix):
-        for j,item in enumerate(row):
-            if item == 0:
-                row_to_repleace.append([i,j])
+    row_flag = [False]*len(matrix)    
+    col_flag = [False]*len(matrix[0])
 
-    for i in row_to_repleace:
-        matrix[i] = zero_row
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if matrix[i][j] == 0:
+                if not row_flag[i]:
+                    row_flag[i] = True
+
+                col_flag[j] = True
 
 
 
