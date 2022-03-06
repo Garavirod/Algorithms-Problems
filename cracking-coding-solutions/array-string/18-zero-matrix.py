@@ -23,6 +23,12 @@ def zero_matrix( matrix: list ) -> list:
 
                 col_flag[j] = True
 
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if row_flag[i]:
+                matrix[i][j] = 0
+            elif col_flag[j]:
+                matrix[i][j] = 0               
 
 
 if __name__ == '__main__':
