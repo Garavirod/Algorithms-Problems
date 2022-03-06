@@ -8,9 +8,6 @@
     are set to 0.
 """
 
-from copy import copy
-
-
 def zero_matrix( matrix: list ) -> list:
     row_flag = [False]*len(matrix)    
     col_flag = [False]*len(matrix[0])
@@ -20,7 +17,6 @@ def zero_matrix( matrix: list ) -> list:
             if matrix[i][j] == 0:
                 if not row_flag[i]:
                     row_flag[i] = True
-
                 col_flag[j] = True
 
     for i in range(len(matrix)):
