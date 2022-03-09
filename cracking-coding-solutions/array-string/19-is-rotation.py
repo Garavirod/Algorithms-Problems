@@ -1,5 +1,7 @@
-/* 
-    9.- String rotation
+#!/usr/bin/ṕython3
+
+"""
+     9.- String rotation
 
     Assume you have a method i 5Su b 5 tr ing which checks if one word is a substring 
     of another. Given two strings, 51 and 52, write code to check if 52 is a rotation 
@@ -22,21 +24,16 @@
     therefore
 
     s2 is a substring of c then it is a rotation of s1
-*/
+"""
 
 
-const isRotation = ( s1, s2 ) => {
-    if (s1.length != s2.length) return false;
-    return (s1+s1).includes(s2)
-}
+def is_roation(s1: str,s2: str) -> bool:
+    if len(s1) != len(s2): return False
+    return s2 in (s1 + s1)
 
 
-const main = () => {
-    const s1 = "helloworld"
-    const s2 = "lloworldhe"
+if __name__ == '__main__':
+    s1 = "helloworld"
+    s2 = "lloworldhe"
 
-    console.log(isRotation(s1,s2));
-}
-
-
-main();
+    print(is_roation(s1,s2))
