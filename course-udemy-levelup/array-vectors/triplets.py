@@ -15,16 +15,19 @@
 def triplets(arr:list, target:int) -> list:
     answer = []
     arr.sort()
-    i,j = 1, len(arr) - 1
-    for k in range(len(arr)-3):
-        s = arr[k] + arr[i] + arr[j]
+    n = len(arr)    
+    for k in range(n-3):
+        i, j = k + 1, n - 1
         while i < j:
+            s = arr[k] + arr[i] + arr[j]
             if s == target:
                 answer.append([arr[k],arr[i],arr[j]])
+                i += 1
+                j -= 1
             elif s > target:
-                j += 1
+                j -= 1
             else:
-                i -= 1
+                i += 1
     return answer
 
 
