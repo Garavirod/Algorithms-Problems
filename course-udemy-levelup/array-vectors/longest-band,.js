@@ -14,25 +14,26 @@
 */
 
 
-function longestBand( arr ){
+const longestBand = (arr) => {
     let unorderSet = new Set()
 
     arr.forEach(e => {
-       unorderSet.add(e) 
+        unorderSet.add(e)
     });
     let largest = 1
     console.log(unorderSet);
 
     unorderSet.forEach(e => {
         let previous = e - 1
-        if( unorderSet.has( previous ) ){
+        // if previous exist ignore it because it could start a new chain
+        if (!unorderSet.has(previous)) {
             let next_no = e + 1
-            let cnt = 2
-            while ( unorderSet.has(next_no) ) {
+            let cnt = 1 // adds up the  itself            
+            while (unorderSet.has(next_no)) {
                 next_no += 1
-                cnt += 1
+                cnt += 1 // count next one
             }
-            largest = Math.max(largest,cnt)
+            largest = Math.max(largest, cnt)
         }
     })
 
@@ -40,6 +41,6 @@ function longestBand( arr ){
 }
 
 
-const arr = [1,9,3,0,18,5,2,10,7,12,6]
+const arr = [1, 9, 3, 0, 18, 5, 2, 4, 10, 7, 12, 6]
 
-console.log(longestBand( arr ));
+console.log(longestBand(arr));
