@@ -13,13 +13,13 @@ const maxSumInSubarray = ( arr ) => {
     
     if(maxSum<0) return 0
 
-    let acumulates = [ arr[0] ]
+    let acumulates = Array.from({length:arr.length},i => 0)
     let max_num_idx = 0
     let buket = 0
 
     for (let i = 1; i < arr.length; i++){
         const s =  acumulates[i-1] + arr[i] 
-        acumulates.push(s)
+        acumulates[i] = s
         console.log(s);        
         if(s > buket){
             buket = s
