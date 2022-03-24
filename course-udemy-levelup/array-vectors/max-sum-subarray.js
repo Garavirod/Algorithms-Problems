@@ -6,49 +6,42 @@
 */
 
 
-const maxSumInSubarray = ( arr ) => {
+const maxSumSubarray = (arr) => {
     let maxSum = 0
-    for (let i = 0; i < arr.length; i++) 
-        maxSum += arr[i]
-    
-    if(maxSum<0) return 0
+    arr.forEach(e => { maxSum += e });
 
-    let acumulates = [ arr[0] ]
-    let max_num_idx = 0
+    if (maxSum < 0) return 0
+
+    let acumulates = Array.from({ length: arr.length }, i => 0)
+    acumulates[0] = arr[0]
+    let maxIndexAcumu = 0
     let buket = 0
-
-    for (let i = 1; i < arr.length; i++){
-        const s =  acumulates[i-1] + arr[i] 
-        acumulates.push(s)
-        console.log(s);        
-        if(s > buket){
-            buket = s
-            max_num_idx = i
+    for (let i = 1; i < arr.length; i++) {
+        const acum = acumulates[i - 1] + arr[i]
+        acumulates[i] = acum
+        if (acum > buket) {
+            buket = acum
+            maxIndexAcumu = i
         }
-    } 
+    }
 
     let it = 1
-    maxSum = arr[max_num_idx]
-    console.log(max_num_idx);
-    return
-    while (it !== max_num_idx) {
-        console.log("hola");
-        let sum_sub_arr = arr[max_num_idx] - acumulates[it-1]
-        maxSum = Math.max( maxSum, sum_sub_arr )
+    maxSum = acumulates[maxIndexAcumu]
+    while (it !== maxIndexAcumu) {
+        const s = acumulates[maxIndexAcumu] - acumulates[it - 1]
+        maxSum = Math.max(s, maxSum)
         it++
     }
 
-    it = arr.length-1
-    while (max_num_idx !== arr.length-1) {
-        let sum_sub_arr = arr[max_num_idx -1] - acumulates[it]
-        maxSum = Math.max( maxSum, sum_sub_arr )
-        max_num_idx++
+    it = acumulates.length - 1
+    while (it !== maxIndexAcumu) {
+        const s = acumulates[it] - acumulates[maxIndexAcumu - 1]
+        maxSum = Math.max(s, maxSum)
+        maxIndexAcumu++
     }
-
     return maxSum
 }
 
 
-const arr = [-1,2,3,4,-2,6,8,3]
-
-console.log( maxSumInSubarray(arr) );
+const arr = [-1, 2, 3, 4, -2, 6, -8, 3]
+console.log(maxSumSubarray(arr));
