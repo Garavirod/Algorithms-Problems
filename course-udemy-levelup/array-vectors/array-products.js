@@ -8,9 +8,21 @@
 
 */
 
-const arryProduct = ( arr ) => {
+var dataInput = ""
+
+process.stdin.on("data", data => {
+    dataInput = data.toString().trim()
+});
+
+
+process.stdin.on("end", () => {
+    dataInput = dataInput.split(" ").map( e => parseInt(e))
+    main()
+});
+
+const arryProduct = (arr) => {
     let temp = 1, n = arr.length
-    let product = Array.from( {length: arr.length},() => 1 )
+    let product = Array.from({ length: arr.length }, () => 1)
 
     /* 
         a = [a1,a2,a3,a4,a5]
@@ -23,20 +35,20 @@ const arryProduct = ( arr ) => {
         On inverse order b[i] 
         b = [(1)*(a2*a3*a4*a5),(a1)*(a3*a4*a5),(a1*a2)*(a4*a5),(a1*a2*a3)*(a5),(a1*a2*a3*a4)*1]
     */
-    for(let i = 0; i<n; i++){
+    for (let i = 0; i < n; i++) {
         product[i] = temp
         temp *= arr[i]
     }
 
     temp = 1
-    for(let i = n-1; i>= 0; i--){
+    for (let i = n - 1; i >= 0; i--) {
         product[i] *= temp
         temp *= arr[i]
     }
 
-return product
+    return product
 }
-
-const arr = [1,2,3,4,5]
-console.log(arryProduct(arr));
+ const main = () => {
+     console.log(arryProduct(dataInput));
+ }
 
