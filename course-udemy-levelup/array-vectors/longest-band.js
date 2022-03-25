@@ -21,7 +21,7 @@ const longestBand = (arr) => {
         unorderSet.add(e)
     });
     let largest = 1
-    console.log(unorderSet);
+
 
     unorderSet.forEach(e => {
         let previous = e - 1
