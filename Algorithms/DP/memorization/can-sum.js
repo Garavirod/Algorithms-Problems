@@ -8,9 +8,19 @@
 
      Use one lemment of array as many taimes as need it
      You may assume that all input numbers are not negative
+
+    m: targetsum
+    n: numbers lnegth 
+    ----Broute force---
+    time complexity : O(n^m)
+    space complexity : O(m)
+
+    ---DP----
+    time complexity : O(n*m)
+    space complexity : O(m)
 */
 
-const canSum = (targetSum, numbers, memo = {}) => {    
+const canSum = (targetSum, numbers, memo = {}) => {
     if (targetSum in memo) return memo[targetSum]
     if (targetSum === 0) return true
     if (targetSum < 0) return false
