@@ -9,3 +9,22 @@
      Use one lemment of array as many taimes as need it
      You may assume that all input numbers are not negative
 */
+
+const canSum = (targetSum, numbers, memo = {}) => {    
+    if (targetSum in memo) return memo[targetSum]
+    if (targetSum === 0) return true
+    if (targetSum < 0) return false
+
+    for (let num of numbers) {
+        const reminder = targetSum - num
+        if (canSum(reminder, numbers, memo)) {
+            memo[targetSum] = true // save on memo
+            return true
+        }
+    }
+    memo[targetSum] = false // save on memo
+    return false
+}
+
+
+console.log(canSum(300, [2, 3]));
