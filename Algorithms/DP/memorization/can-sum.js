@@ -1,0 +1,11 @@
+/* 
+    Write a function that takes in a targetsum
+     and an array of numbers as arguments.
+
+     the function should return a boolean indicating
+     whether or not is possible to generate the targert sum
+     using memebr from array.
+
+     Use one lemment of array as many taimes as need it
+     You may assume that all input numbers are not negative
+*/
