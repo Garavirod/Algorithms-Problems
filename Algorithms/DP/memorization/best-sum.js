@@ -8,25 +8,31 @@
     return anyone of them
 
     Broute force
-
+    time complexity: O(n^m * m )
+    space complexity: O(m^2)
 
     Memorizing
+    time complexity: O(n^m * m )
+    space complexity: O(n*m^2)
 */
 
 
-const bestSum = (targetSum, numbers) => {
+const bestSum = (targetSum, numbers, memo={}) => {
+    if(targetSum in memo) return memo[targetSum]
     if (targetSum === 0) return []
     if (targetSum < 0) return null
     let shortestCombination = null
+
     for(let num of numbers){
         const reminder = targetSum - num
-        const reminderCombination = bestSum(reminder, numbers)
+        const reminderCombination = bestSum(reminder, numbers, memo)
         if(reminderCombination){
             const combination = [...reminderCombination, num]
             if(!shortestCombination || combination.length < shortestCombination.length)
                 shortestCombination = combination
         }
     }
+    memo[targetSum] = shortestCombination
     return shortestCombination
 }
 
