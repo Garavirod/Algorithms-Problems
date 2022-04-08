@@ -20,21 +20,24 @@
     space complexity : O(m)
 */
 
-const canSumTab = (targetSum, numbers, memo = {}) => {
-    let n = numbers.length
-    let table = Array.from(
-        {length: n},() => Array.from({length:n}, () => 0)
-    )
-
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = 0; j < n; j++) {            
-            if(numbers[i] + numbers[j] === targetSum) 
-                return true
-        }        
+const canSumTab = (targetSum, numbers) => {
+    let table = Array(targetSum + 1).fill(false)
+    console.log(table.length);
+    table[0] = true
+    for (let i = 0; i <= targetSum; i++) {
+        /*
+         If my current postion is reacheable 
+         I can asum that my current position 
+         plus num is also reachable 
+        */
+        if (table[i] === true) {
+            for (let num of numbers)
+                table[i + num] = true
+        }
     }
 
-    return false
+    return table[targetSum]
 }
 
 
-console.log(canSumTab(300, [2, 3]));
+console.log(canSumTab(300, [7, 14]));
