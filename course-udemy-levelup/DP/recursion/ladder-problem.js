@@ -7,16 +7,18 @@
 let inputData = []
 let i = 0
 
-const readLine = () => ( parseInt(inputData[i++]) )
+const readLine = () => (parseInt(inputData[i++]))
 
-const ladderProblem = (k,n) => {
-    if (n <= 1) return 1    
+const ladderProblem = (k, n, memo={}) => {
+    if (n in memo) return memo[n]
+    if (n == 0) return 1
+    if (n < 0) return 0
+
     let ways = 0
-    for (let i = 1; i<=n; i++) {
-        ways += ladderProblem(k,n-i) 
-        console.log(n-i+"-"+ways);
-    }
-
+    for (let i = 1; i <= k; i++) {
+        memo[n-i] = ladderProblem(k, n - i, memo)  
+        ways += memo[n-i]
+    }    
     return ways
 }
 
@@ -35,3 +37,4 @@ const main = () => {
     const n = readLine()
     console.log( ladderProblem(k,n) );
 }
+
