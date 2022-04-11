@@ -40,8 +40,25 @@ const ladderProblem = (k, n) => {
 
 }
 
+// Optimal solution O(k+n)
 
-process.stdin.on("data", (data) => {
+const optimalLadderProblem = (k, n) => {
+    let table = Array(n + 1).fill(0)
+    table[0] = 1
+    table[1] = 1
+
+    for(let i = 2; i<= k; i++){
+        table[i] = 2*table[i-1]
+    }
+    for(let i = k+1; i<= n; i++){
+        table[i] = 2*table[i-1] - table[i-k-1]
+    }
+
+    return table[n]
+}
+
+
+/* process.stdin.on("data", (data) => {
     inputData.push( data.toString().trim() )
 })
 
@@ -54,6 +71,7 @@ const main = () => {
     const k = readLine()
     const n = readLine()
     console.log( ladderProblem(k,n) );
-}
+} */
 
-/* console.log( ladderProblem(3,4) ); */
+console.log( ladderProblem(3,4) );
+console.log(  optimalLadderProblem(3,4) );
