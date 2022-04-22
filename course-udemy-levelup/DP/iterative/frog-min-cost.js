@@ -32,5 +32,5 @@ const minFrogCost = (stones) => {
     return table[n-1]
 }
 
-const stones = [30, 10, 60, 10, 60, 50]
+const stones = [10, 30,40,50,20]
 console.log(minFrogCost(stones));
