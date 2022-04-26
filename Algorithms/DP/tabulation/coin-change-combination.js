@@ -5,11 +5,11 @@
 
 const getChangeCombination = (n,c) => {
     // Table[i] represent  total of combination to form amount i
-    let table = Array(n).fill(0)
+    let table = Array(n+1).fill(0)
     table[0] = 1
 
     for(let a of c){
-        for (let i = 1; i < c.length; i++) {
+        for (let i = 1; i < table.length; i++) {
             if(i >= a ){
                 table[i] += table[i - a]
             }            
