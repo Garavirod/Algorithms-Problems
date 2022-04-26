@@ -4,7 +4,7 @@
 */
 
 const getChangeCombination = (n,c) => {
-    // Table[i] represent a combination of form amount i
+    // Table[i] represent  total of combination to form amount i
     let table = Array(n).fill(0)
     table[0] = 1
 
