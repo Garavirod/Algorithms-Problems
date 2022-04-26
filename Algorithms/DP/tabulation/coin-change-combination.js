@@ -8,7 +8,7 @@ const getChangeCombination = (n,c) => {
     let table = Array(n).fill(0)
     table[0] = 1
 
-    for(let a in c){
+    for(let a of c){
         for (let i = 1; i < c.length; i++) {
             if(i >= a ){
                 table[i] += table[i - a]
