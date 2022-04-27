@@ -17,6 +17,8 @@
 const maxSubArray = (nums) => {
     let globalSum = currentSum = nums[0]
     for (let i = 1; i<nums.length; i++) {
+        // If currentSum + nums[i] is a negative result then 
+        // currentSum = nums[i] inits a new subsecuence
         currentSum = Math.max(nums[i], currentSum + nums[i])
         if(globalSum < currentSum) 
             globalSum = currentSum
