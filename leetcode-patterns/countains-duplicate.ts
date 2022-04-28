@@ -17,9 +17,9 @@ function containsDuplicate(nums: number[]): boolean {
             hashmap[n] = 1
     }
     
-    for(let i of Object.values(hashmap)){
-        if(i>1) return false
+    for(let k in hashmap){
+        if( hashmap[k] >1) return true
     }
         
-    return true
+    return false
 };
