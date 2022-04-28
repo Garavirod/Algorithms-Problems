@@ -15,6 +15,11 @@
     1101
     
     Technique: Bits manipulation
+    Time complexity: O(NlogN)
+    Space complexity: O(N)
+    
+    
+    
 */
 
 function countBits(n: number): number[] {
@@ -24,12 +29,11 @@ function countBits(n: number): number[] {
         let bitsCounter = 0
         let num = i
         // While result of division get become to zero
+        // This takes Log N times, it means a N number divided into two
         while( num !== 0  ){
             // Count a bit if rest of division is zero    
             // this return 1 or 0 because in modular arithmetic x mod 2 represents a circle divided into 2 sizes  (1 | 0)
             bitsCounter += num % 2 
-                        
-            // 
             num =  Math.floor(num / 2 )            
         }
         
