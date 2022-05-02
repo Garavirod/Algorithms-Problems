@@ -17,8 +17,8 @@
 */
 
 
-const missingNumber = (nums) => {
-    const n = nums.length
+const missingNumber = (nums:Array<number>) => {
+    let n = nums.length
     
     for(let i = 0; i<nums.length; i++){
         n += i - nums[i]
