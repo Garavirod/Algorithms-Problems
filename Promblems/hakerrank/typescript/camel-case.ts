@@ -1,4 +1,5 @@
 function camelCase(str: string): number {
+    
     let counterwords = 0
     let unorderSet = new Set()
 
