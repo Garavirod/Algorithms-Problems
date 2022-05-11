@@ -18,13 +18,12 @@ class TreeNode {
  * @returns {boolean}
  */
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    // bouth empty
-    if(!p && !q) return true 
-    // if oneis empty or both val aren't equal
-    if( !p || !q || q.val != p.val) return false
-
-    return (
-        isSameTree(q.left, p.left) &&
-        isSameTree(q.right,p.right)
+    // some root is empty
+    if(!p || !q) return (p === null && q === null)  
+    // none is empty verify values 
+    if(p.val === q.val) return(
+        isSameTree(q.left,p.left) &&
+        isSameTree(q.right, p.right)
     )
+    return false
 };
