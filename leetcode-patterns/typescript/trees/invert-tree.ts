@@ -10,8 +10,12 @@ class TreeNode {
     }
 }
 
-
- function invertTree(root: TreeNode | null): TreeNode | null {
+/**
+ * 
+ * @param root 
+ * @returns {TreeNode|null}
+ */
+function invertTree(root: TreeNode | null): TreeNode | null {
     if(!root) return root
 
     //swap nodes pointers
