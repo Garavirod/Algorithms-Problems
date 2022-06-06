@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Boxes style section */
+        .container {
+            width: 90%;
+            background-color: blueviolet;
+            height: 90vh;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .box {
+            color: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: auto;
+            font-size: 40px;
+            width: 30%;
+            height: 30%;
+            background-color: grey;
+            border-radius: 5%;
+            border: none;
+
+        }
+
+        .box button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border-style: none;
+            background-color: rgb(224, 152, 101);
+            color: grey;
+        }
+
+        .box button:hover {
+            background-color: chocolate;
+            color: grey;
+            cursor: pointer;
+        }
+
+        /* Button here section */
+        .btn-container{
+            width: 50%;
+            margin: auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-container button {
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            color: white;
+            border: none;
+            background-color: chocolate;
+            border-radius: 10px;
+        }
+
+        .btn-container button:hover{
+            background-color: rgb(234, 161, 108);
+            cursor: pointer;            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box"><span>0</span> <button onclick="addition(event)">+</button></div>
+        <div class="box"><span>0</span> <button onclick="addition(event)">+</button></div>
+        <div class="box"><span>0</span> <button onclick="addition(event)">+</button></div>       
+    </div>
+    <div class="btn-container">
+        <button onclick="intervalAddition()">Click here!</button>
+    </div>
+    <script>
+        function addition(event){
+            // Get current vale into box'span            
+            const current = event.target.parentElement.getElementsByTagName('span')[0].textContent;
+            // Set new value into span
+            event.target.parentElement.getElementsByTagName('span')[0].innerHTML = `${parseInt(current) + 1}`;            
+        }
+
+        /*
+            Increment one the current value of each box
+        */
+        function incrementBoxesValue(boxes){
+            for(let box of boxes){
+                const current = box.getElementsByTagName('span')[0].textContent;
+                box.getElementsByTagName('span')[0].innerHTML = `${parseInt(current) + 1}`;            
+            }
+        }
+
+        /*
+            Inicialize the counter in each box when button is cliked            
+        */
+        function intervalAddition(){
+            setInterval(()=>{
+                //Each second get all boxes
+                const boxes = document.getElementsByClassName('box');
+                incrementBoxesValue(boxes);                
+            },1000);
+        }
+
+        /* $(function () {
+            var word = 'Jesodri'; // word to search in a document
+            var regex = /\bJesodri\b/gi
+            alert($('body').text().match(regex).length  - 1);
+        }); */
+    </script>
+</body>
+
+</html>
