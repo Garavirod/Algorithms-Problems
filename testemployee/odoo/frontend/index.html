@@ -84,19 +84,21 @@
 
 <body>
     <div class="container">
-        <div class="box"><span>0</span> <button onclick="addition(event)">+</button></div>
-        <div class="box"><span>0</span> <button onclick="addition(event)">+</button></div>
-        <div class="box"><span>0</span> <button onclick="addition(event)">+</button></div>       
+        <p>odoo.sh Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem dolorem natus soluta alias velit? Quaerat optio aperiam rerum voluptatum quasi odio rem ad, ducimus laborum quos, libero soluta, eligendi iusto.</p>
+        <div class="box" onclick="addition(event)"><span>0</span></div>
+        <div class="box" onclick="addition(event)"><span>0</span></div>
+        <div class="box" onclick="addition(event)"><span>0</span></div>       
     </div>
     <div class="btn-container">
+        <p>odoo.sh Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quis corrupti ipsum reiciendis obcaecati perspiciatis. Dignissimos mollitia delectus aliquid asperiores blanditiis nulla suscipit vero facere animi deserunt, quasi voluptas error! odoo.sh</p>
         <button onclick="intervalAddition()">Click here!</button>
     </div>
     <script>
         function addition(event){
             // Get current vale into box'span            
-            const current = event.target.parentElement.getElementsByTagName('span')[0].textContent;
+            const current = event.target.getElementsByTagName('span')[0].textContent;
             // Set new value into span
-            event.target.parentElement.getElementsByTagName('span')[0].innerHTML = `${parseInt(current) + 1}`;            
+            event.target.getElementsByTagName('span')[0].innerHTML = `${parseInt(current) + 1}`;            
         }
 
         /*
@@ -120,10 +122,9 @@
             },1000);
         }
 
-        /* $(function () {
-            var word = 'Jesodri'; // word to search in a document
-            var regex = /\bJesodri\b/gi
-            alert($('body').text().match(regex).length  - 1);
+       /*  $(function () {          
+            var regex = /\bodoo\.sh\b/gi
+            alert($('body').text().match(regex).length);
         }); */
     </script>
 </body>

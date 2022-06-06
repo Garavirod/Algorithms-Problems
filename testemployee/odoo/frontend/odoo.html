@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            display: flex;
+            width: 90%;
+            height: 90vh;
+            margin: auto;
+            padding: 30px;           
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+
+        .box {
+            height: 80px;
+            width: 30%;
+            margin: 10px 1em;
+            padding-left: 10px;
+            padding-right: 10px;
+            flex: 25%;
+            text-align: center;
+            border: solid 2px #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+        <div onclick="incrementOnClick(event)" class='box'>
+            <span>0</span>
+        </div>
+    </div>
+    <button onclick="initCounter()">Click here</button>
+
+    <script>
+        // Increment by one the current vale into box'span
+        function incrementOnClick(event){
+            // Get current vale into box'span            
+            const current = event.target.getElementsByTagName('span')[0].textContent;
+            // Set new value into span
+            event.target.getElementsByTagName('span')[0].innerHTML = `${parseInt(current) + 1}`;            
+        }
+
+    </script>
+    <script>
+        /*
+            Increment by one the current value of the box
+        */
+        function incrementBoxesValue(box){
+            // Obtain the span into box in order to get the current number
+            const current = box.getElementsByTagName('span')[0].textContent;
+            // Set new value into span
+            box.getElementsByTagName('span')[0].innerHTML = `${parseInt(current) + 1}`;            
+        }
+
+        /*
+            Inicialize the counter in each box when button is cliked            
+        */
+        function initCounter(){
+            // Get all div boxes
+            const boxes = document.getElementsByClassName('box');
+            let counter_box = 0;
+            // evry second excute incrementBoxesValue(boxes[counter_box])
+            const timer = setInterval(()=>{                                
+                incrementBoxesValue(boxes[counter_box]);
+                counter_box += 1
+                if(counter_box === boxes.length){
+                    clearInterval(timer) // stop timer
+                }                
+            },1000);
+        }
+
+    </script>
+</body>
+</html>
