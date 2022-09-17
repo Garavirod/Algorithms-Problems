@@ -11,9 +11,16 @@ class TreeNode {
     }
 }
 
-
-
-
+/**
+ * The diameter of binary tree si the longest path from a node A to B
+ * 
+ * To get the diameter in each node through bottom up aproach is
+ * D =  Lh + rh + 2
+ * where lh and rh are heights of left and right
+ * 
+ * @param root 
+ * @returns {Number}
+ */
 function diameterOfBinaryTree(root: TreeNode | null): number {
     var diameter = 0;
     function dfs(root: TreeNode | null) {
@@ -27,3 +34,4 @@ function diameterOfBinaryTree(root: TreeNode | null): number {
     dfs(root);
     return diameter;
 };
+
