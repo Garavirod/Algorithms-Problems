@@ -32,8 +32,9 @@ class WordDictionary {
             let w = word[i];
             if (w === '.') {
                 for (let key in curr.children) {
-                    return (this.dfs(i + 1, curr.children[key], word)) ? true : false;
+                    if (this.dfs(i + 1, curr.children[key], word)) return true;
                 }
+                return false;
             } else {
                 if (!(w in curr.children)) return false;
                 curr = curr.children[w];
