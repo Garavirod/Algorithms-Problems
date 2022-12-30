@@ -5,14 +5,14 @@
  * Inserting an element: O(log n) 
  * Removing an element: O(log n)
  */
-class MinHeap {
-    heap: number[];
+export class MinHeap {
+    private heap: number[];
     constructor(values: number[]) {
         this.heap = [-1];
         for (let n of values) this.add(n);
     }
 
-    add(item: number): number {
+    public add(item: number): number {
         const len = this.heap.length;
         this.heap.push(item);
         if (len === 1) return item;
@@ -21,7 +21,7 @@ class MinHeap {
         return this.heap[1];
     }
 
-    remove(): number | undefined {
+    public remove(): number | undefined {
         if (this.heap.length === 1) return undefined; // Heap is empty and only contains dummy data
         if (this.heap.length === 2) return this.heap.pop(); // Heap only contains a single number
         const prevRoot = this.heap[1];
@@ -31,6 +31,10 @@ class MinHeap {
         this.heapfyDown();
         return prevRoot;
     }
+
+    get getHeap(): number[] { return this.heap; }
+
+    get heepLength(): number { return this.getHeap.length - 1; }
 
     /**
      * Reorder the nodes whenever a new node is added.
@@ -83,31 +87,13 @@ class MinHeap {
         }
     }
 
-    private isRoot(index: number): boolean {
-        return index === 1;
-    }
-
-    private getParentIndex(index: number): number {
-        return Math.floor(index / 2);
-    }
-
-    private getParentNonde(index: number): number {
-        return this.heap[this.getParentIndex(index)]
-    }
-
-    private getLeftNode(index: number): number {
-        return this.heap[this.getLeftIndex(index)];
-    }
-    private getRightNode(index: number): number {
-        return this.heap[this.getRightIndex(index)];
-    }
-
-    private getLeftIndex(index: number): number {
-        return 2 * index;
-    }
-    private getRightIndex(index: number): number {
-        return 2 * index + 1;
-    }
+    private isRoot(index: number): boolean { return index === 1; }
+    private getParentIndex(index: number): number { return Math.floor(index / 2); }
+    private getParentNonde(index: number): number { return this.heap[this.getParentIndex(index)]; }
+    private getLeftNode(index: number): number { return this.heap[this.getLeftIndex(index)]; }
+    private getRightNode(index: number): number { return this.heap[this.getRightIndex(index)]; }
+    private getLeftIndex(index: number): number { return 2 * index; }
+    private getRightIndex(index: number): number { return 2 * index + 1; }
 }
 
 
