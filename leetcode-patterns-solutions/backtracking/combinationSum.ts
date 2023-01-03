@@ -1,5 +1,6 @@
 /* 
     39. Combination Sum
+    complexity O(2^target)
 */
 function combinationSum(candidates: number[], target: number): number[][] {
     let results: number[][] = [];

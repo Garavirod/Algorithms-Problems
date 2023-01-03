@@ -1,5 +1,6 @@
 /**
  * 78. Subsets
+ * complexity O(2^N)
  * @param nums 
  * @returns {Array}
  */
