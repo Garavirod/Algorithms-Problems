@@ -34,6 +34,17 @@ function main(input) {
 }
 
 
-
+/***
+ * split number e.g  1345 -> 1 3 4 5
+ */
+function sumSquared(n){
+    let output = 0;
+    while(n){
+        const digit = n % 10;
+        output += digit*digit;
+        n = Math.floor(n/10);
+    }
+    return output;
+}
 
 // Write your code here
